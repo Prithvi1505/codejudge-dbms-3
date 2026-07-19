@@ -25,6 +25,17 @@ SELECT student_name FROM Students WHERE department = 'CS'
 UNION
 SELECT student_name FROM Students WHERE enrollment_year = 2024;
 
+-- Transaction Example
+BEGIN TRANSACTION;
+
+UPDATE Courses SET available_seats = available_seats - 1 
+WHERE course_code = 'CS101' AND available_seats > 0;
+
+INSERT INTO Enrollments (student_id, course_code, marks_obtained) 
+VALUES (1, 'CS101', 0);
+
+COMMIT;
+
 -- Window Function
 SELECT student_name, marks_obtained,
        ROW_NUMBER() OVER (PARTITION BY department ORDER BY marks_obtained DESC) as rn
