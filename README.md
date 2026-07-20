@@ -37,3 +37,27 @@ Serializable isolation level prevents it by locking rows.
 - Admins: Full access.
 
 **e.** Active attack: Attacker performs session hijacking after capturing cookies on open Wi-Fi. This is active because the attacker injects/modifies traffic.
+
+
+## Aging Trace (Priority Scheduling)
+
+Low-priority process P5 starved because higher priority processes keep arriving.
+
+After aging (priority += 1 every 5 time units):
+Time | P1 Pri | P5 Pri
+0    | 10     | 1
+10   | 10     | 3
+20   | 10     | 5   ← P5 now scheduled
+
+## Deadlock Scenario
+
+Processes: P1, P2, P3  
+Resources: R1 (DB lock), R2 (File lock), R3 (Cache lock)
+
+- P1 holds R1, requests R2
+- P2 holds R2, requests R3
+- P3 holds R3, requests R1
+
+All 4 conditions satisfied. Removing P3→R1 breaks circular wait.
+
+Prevention: Impose resource ordering (always request lower numbered resource first). Limitation: May reduce concurrency.
