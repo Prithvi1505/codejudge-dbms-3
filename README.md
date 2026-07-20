@@ -13,3 +13,27 @@ Unnormalized: Repeating course info in every enrollment row.
 ## Concurrency Scenario
 Two students try to enroll in last seat → Lost Update.
 Serializable isolation level prevents it by locking rows.
+
+
+# Part 2 — Cryptographic Protocols & Network Security
+
+## Task 3: Security Principle Mapping
+- **RSA**: Provides Confidentiality (encryption) and can support Non-repudiation (with digital signatures).
+- **Diffie-Hellman**: Key exchange protocol only. It establishes a shared secret but does not encrypt data itself.
+
+**Why DH is key exchange, not encryption**: It allows two parties to agree on a secret key over an insecure channel. The key can then be used with symmetric encryption (e.g., AES).
+
+## Task 4: Threat Model Write-up
+
+**a.** Place a hardware firewall at the network perimeter. Rule: Allow only ports 80/443 inbound.
+
+**b.** Deploy both Host-based IDS (detects file changes on server) and Network-based IDS (detects network anomalies).
+
+**c.** Use HTTPS. It prevents credential sniffing (man-in-the-middle on plain HTTP).
+
+**d.** 2FA: Password (knowledge) + OTP from app (possession). 
+- Students: Read marks + enroll.
+- Instructors: Read/Write marks.
+- Admins: Full access.
+
+**e.** Active attack: Attacker performs session hijacking after capturing cookies on open Wi-Fi. This is active because the attacker injects/modifies traffic.
