@@ -15,8 +15,6 @@ Two students try to enroll in last seat → Lost Update.
 Serializable isolation level prevents it by locking rows.
 
 
-# Part 2 — Cryptographic Protocols & Network Security
-
 ## Task 3: Security Principle Mapping
 - **RSA**: Provides Confidentiality (encryption) and can support Non-repudiation (with digital signatures).
 - **Diffie-Hellman**: Key exchange protocol only. It establishes a shared secret but does not encrypt data itself.
